@@ -11,9 +11,9 @@ public class App {
 
     public static void main( String[] args )
     {
-        String weight = getWeight();
         String gender = getGender();
         String totalOZ = getOZ();
+        String weight = getWeight();
         String hours = getHours();
         double weightNum = stringToDouble(weight);
         double OZNum = stringToDouble(totalOZ);
@@ -26,7 +26,7 @@ public class App {
         System.out.println( "Please enter your weight: " );
         String input = in.nextLine();
 
-        Boolean validFlag = false;
+        boolean validFlag = false;
         while(!validFlag)
         try
         {
@@ -52,7 +52,7 @@ public class App {
         System.out.println( "Please enter the number of ounces you drank: " );
         String input = in.nextLine();
 
-        Boolean validFlag = false;
+        boolean validFlag = false;
         while(!validFlag)
             try
             {
@@ -72,7 +72,7 @@ public class App {
         System.out.println( "Please enter the number of hours since you last drank: " );
         String input = in.nextLine();
 
-        Boolean validFlag = false;
+        boolean validFlag = false;
         while(!validFlag)
             try
             {
@@ -94,13 +94,13 @@ public class App {
 
     public static double calcBAC(String gender, double weightNum, double OZNum, double hoursNum)
     {
-        if (gender.equals("F"))
+        if (gender.equals("F") || gender.equals("f"))
         {
-            return ((OZNum * 5.14 / weightNum * 0.66) - (0.15 * hoursNum));
+            return ((OZNum * 5.14 / weightNum * 0.66) - 0.015 * hoursNum);
         }
-        else if (gender.equals("M"))
+        else if (gender.equals("M")|| gender.equals("m"))
         {
-            return ((OZNum * 5.14 / weightNum * 0.73) - (0.15 * hoursNum));
+            return ((OZNum * 5.14 / weightNum * 0.73) - 0.015 * hoursNum);
         }
         else return -1;
     }
